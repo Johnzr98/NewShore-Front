@@ -1,17 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IRoutes } from 'src/app/views/pages/home/models/routes.interface';
+import { IRoute } from 'src/app/views/pages/home/models/route.interface';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  templateUrl: './search.component.html'
 })
 export class SearchComponent {
 
   @Input() placeholder: string = 'Search...';
   @Input() listCoincidencesFrom: Array<string> = [];
   @Input() listCoincidencesTo: Array<string> = [];
-  @Output() goToSearch = new EventEmitter<IRoutes>();
+  @Output() goToSearch = new EventEmitter<IRoute>();
 
   public coincidenceFrom = '';
   public coincidenceTo = '';
@@ -54,7 +53,7 @@ export class SearchComponent {
 
   search(){
     if (this.isEnabledSearch) {
-      let params: IRoutes = {
+      let params: IRoute = {
         departureStation: this.coincidenceFrom,
         arrivalStation: this.coincidenceTo
       }

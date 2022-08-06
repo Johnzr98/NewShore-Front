@@ -4,7 +4,8 @@
     <li *ngFor="let option of listOptions"       
         class="list-group-item"
         [class]="option.enabled ? 'enabled' : 'disabled'"
-        type="button">
+        type="button"
+        (click)="emit(option.level)">
         Search by level {{ option.level }}
     </li>
 </ul>

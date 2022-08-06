@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ValidateTokenGuard } from './core/guards/validate-token.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [ValidateTokenGuard],
+    canLoad: [ValidateTokenGuard],
     loadChildren: () => import('./views/pages/pages.module').then(m => m.PagesModule)
   },
   {

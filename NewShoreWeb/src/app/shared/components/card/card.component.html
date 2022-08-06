@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header">
+      {{ headerTitle }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ flight.departureStation }} - {{ flight.arrivalStation }}</h5>
+      <p class="card-text">FlightCarrier: {{ flight.flightCarrier }}</p>
+      <p class="card-text">FlightNumber: {{ flight.flightNumber }}</p>
+      <p class="card-text">Price: {{ flight.price | currency: isUSD}}</p>
+      <p class="card-text text-info">We create airline solutions through technology and business expertise</p>
+      <a class="btn btn-primary">{{ textButton }}</a>
+    </div>
+  </div>

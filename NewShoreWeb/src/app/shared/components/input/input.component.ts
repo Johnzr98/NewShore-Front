@@ -5,13 +5,12 @@ import { debounceTime } from 'rxjs/operators'
 
 @Component({
   selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  templateUrl: './input.component.html'
 })
 export class InputComponent implements OnInit {
 
   @Input() text = '';
-  @Input() placeholder: string = 'Search...';
+  @Input() placeholder = 'Search...';
   @Output() onKeyPressed: EventEmitter<string> = new EventEmitter();
   
   private debouncer: Subject<string> = new Subject();

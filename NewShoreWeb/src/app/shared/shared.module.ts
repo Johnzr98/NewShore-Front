@@ -7,6 +7,8 @@ import { SearchComponent } from './components/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { CardComponent } from './components/card/card.component';
+import { CurrencyPipe } from './pipes/currency.pipe';
 
 
 
@@ -17,7 +19,9 @@ import { AlertComponent } from './components/alert/alert.component';
     TableCoincidencesComponent,
     SearchComponent,
     ButtonComponent,
-    AlertComponent
+    AlertComponent,
+    CardComponent,
+    CurrencyPipe
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,10 @@ import { AlertComponent } from './components/alert/alert.component';
     InputComponent,
     TableCoincidencesComponent,
     SearchComponent,
-    ButtonComponent
+    ButtonComponent,
+    AlertComponent,
+    CardComponent,
+    CurrencyPipe
   ]
 })
 export class SharedModule { }

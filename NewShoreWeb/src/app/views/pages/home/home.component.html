@@ -1,9 +1,9 @@
 <div class="row container mt-4">
     <div class="col-md-3 col-sm-12">
-        <app-sidebar></app-sidebar>
+        <app-sidebar (category)="changeCategory($event)"></app-sidebar>
     </div>
     <div class="col center">
-        <div class="row">
+        <div class="row" *ngIf="listCoincidencesFrom.length > 0">
             <h2>Where are you flying?</h2>
             <div mt-2>
                 <app-search 
@@ -11,6 +11,27 @@
                     [listCoincidencesFrom]="listCoincidencesFrom"
                     [listCoincidencesTo]="listCoincidencesTo">
                 </app-search>
+            </div>
+        </div>
+        <div class="row" *ngIf="listCoincidencesFrom.length === 0">
+            <h5>Go</h5>
+            <app-alert textMsg="Services are currently down - please check the api path"></app-alert>
+            <app-button textValue="Reload" mt-4 (onSubmit)="searchFlightsRoutes()"></app-button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container mt-4" *ngIf="dataFlight.length > 0">
+    <div *ngFor="let flight of dataFlight" class="row" class="d-flex justify-content-center">
+        <div class="col-md-3">
+            <app-button textValue="USD" class="btn btn-primary" (onSubmit)="isUSD = true"></app-button>
+            <br>
+            <br>
+            <app-button textValue="COL" class="btn btn-primary" (onSubmit)="isUSD = false"></app-button>    
+        </div>
+        <div class="col-md-9">
+            <div class="d-flex justify-content-center">
+                <app-card [flight]="flight" [isUSD]="isUSD"></app-card>
             </div>
         </div>
     </div>

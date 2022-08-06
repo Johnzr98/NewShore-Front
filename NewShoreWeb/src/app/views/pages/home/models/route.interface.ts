@@ -1,4 +1,4 @@
-export interface IRoutes {
+export interface IRoute {
     departureStation: string;
     arrivalStation: string;
 }

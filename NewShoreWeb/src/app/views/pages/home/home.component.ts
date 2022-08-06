@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { IRoutes } from './models/routes.interface';
+import { IRoute } from './models/route.interface';
 import { HomeService } from './services/home.service';
+import { IFlight } from './models/flight.interface';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
-  listCoincidencesFrom: Array<string> = [];
-  listCoincidencesTo: Array<string> = [];
+  public listCoincidencesFrom: Array<string> = [];
+  public listCoincidencesTo: Array<string> = [];
+  public category = 0;
+  public isUSD = true;
+  public dataFlight: IFlight[] = [];
 
   constructor(private homeService: HomeService) { }
 
@@ -18,17 +21,16 @@ export class HomeComponent implements OnInit {
     this.searchFlightsRoutes();
   }
 
-  private searchFlightsRoutes(){
-    this.homeService.getFlightsRoutes().subscribe(flights => {
+  searchFlightsRoutes(){
+    this.homeService.getFlightsRoutes(this.category).subscribe(flights => {
       this.addFlightsRoutes(flights);
     });
   }
 
-  private addFlightsRoutes(routes: IRoutes[]){
+  private addFlightsRoutes(routes: IRoute[]){
     routes.forEach(route => {
-      
       let departur = route.departureStation.toUpperCase();
-      let arrival = route.departureStation.toUpperCase();
+      let arrival = route.arrivalStation.toUpperCase();
 
       let existFrom = this.listCoincidencesFrom.find(x => x === departur);
       let existTo   = this.listCoincidencesTo.find(x => x === arrival);
@@ -42,8 +44,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  search(dataToSearch: IRoutes){
-    console.log(dataToSearch);
+  changeCategory(category: number){
+    if (this.category !== category) {
+      this.category = category;
+      this.searchFlightsRoutes();
+    }
+  }
+
+  search(dataToSearch: IRoute){
+    if (dataToSearch) {
+      this.homeService.getFlights(dataToSearch).subscribe(resp => {
+        this.dataFlight = resp;
+      });
+    }
   }
 
 }
