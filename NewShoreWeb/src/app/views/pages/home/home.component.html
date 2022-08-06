@@ -1,0 +1,17 @@
+<div class="row container mt-4">
+    <div class="col-md-3 col-sm-12">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col center">
+        <div class="row">
+            <h2>Where are you flying?</h2>
+            <div mt-2>
+                <app-search 
+                    (goToSearch)="search($event)"
+                    [listCoincidencesFrom]="listCoincidencesFrom"
+                    [listCoincidencesTo]="listCoincidencesTo">
+                </app-search>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-5">
+        <div class="row">
+            <h5>From</h5>
+            <div class="col">
+                <app-input 
+                    [text]="coincidenceFrom"
+                    (onKeyPressed)="selectedCoincidenceFrom($event)">
+                </app-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <app-table-coincidences 
+                    [valueToSearch]="coincidenceFrom"
+                    [listCoincidences]="listCoincidencesFrom"
+                    (selectedCoincidence)="selectedCoincidenceFrom($event)">
+                </app-table-coincidences>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="row">
+            <h5>To</h5>
+            <div class="col">
+                <app-input 
+                    [text]="coincidenceTo"
+                    (onKeyPressed)="selectedCoincidenceTo($event)">
+                </app-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <app-table-coincidences 
+                    [valueToSearch]="coincidenceTo"
+                    [listCoincidences]="listCoincidencesTo"
+                    (selectedCoincidence)="selectedCoincidenceTo($event)">
+                </app-table-coincidences>
+            </div>
+        </div>
+    </div>
+    <div class="col" *ngIf="isEnabledSearch" >
+        <h5>Go</h5>
+        <app-button (onSubmit)="search()"></app-button>
+    </div>
+</div>
+<div class="row mt-3" *ngIf="hasError">
+    <app-alert [textMsg]="txtMsgError"></app-alert>
+</div>

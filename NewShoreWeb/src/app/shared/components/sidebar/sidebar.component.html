@@ -1,0 +1,10 @@
+<h2>Difficulty level</h2>
+<hr>
+<ul class="list-group" *ngIf="listOptions.length > 0">
+    <li *ngFor="let option of listOptions"       
+        class="list-group-item"
+        [class]="option.enabled ? 'enabled' : 'disabled'"
+        type="button">
+        Search by level {{ option.level }}
+    </li>
+</ul>
