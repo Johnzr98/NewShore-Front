@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IFlight } from 'src/app/views/pages/home/models/flight.interface';
+import { IJourney } from 'src/app/views/pages/home/models/journey.interface';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,7 @@ import { IFlight } from 'src/app/views/pages/home/models/flight.interface';
 export class CardComponent {
 
   @Input() headerTitle = 'Flight information';
-  @Input() flight!: IFlight;
+  @Input() journey!: IJourney;
   @Input() textButton = 'View More';
   @Input() isUSD = false;
 }

@@ -44,7 +44,7 @@ describe('HomeComponent', () => {
   });
   
   it('departureStation to be BOG when is called getFlights', () => {
-    const serviceSpy = spyOn(mockHomeService, 'getFlights').and.callThrough();
+    const serviceSpy = spyOn(mockHomeService, 'getJourney').and.callThrough();
 
     const dataRoutes: IRoute = {
       departureStation: 'BOG',

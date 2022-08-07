@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IRoute } from './models/route.interface';
 import { HomeService } from './services/home.service';
-import { IFlight } from './models/flight.interface';
+import { IJourney } from './models/journey.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   public listCoincidencesTo: Array<string> = [];
   public category = 0;
   public isUSD = true;
-  public dataFlight: IFlight[] = [];
+  public journey!: IJourney;
 
   constructor(private homeService: HomeService) { }
 
@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
 
   search(dataToSearch: IRoute){
     if (dataToSearch) {
-      this.homeService.getFlights(dataToSearch).subscribe(resp => {
-        this.dataFlight = resp;
+      this.homeService.getJourney(dataToSearch).subscribe(resp => {
+        this.journey = resp;
       });
     }
   }

@@ -21,8 +21,8 @@
     </div>
 </div>
 <hr>
-<div class="container mt-4" *ngIf="dataFlight.length > 0">
-    <div *ngFor="let flight of dataFlight" class="row" class="d-flex justify-content-center">
+<div class="container mt-4" *ngIf="journey">
+    <div class="row">
         <div class="col-md-3">
             <app-button textValue="USD" class="btn btn-primary" (onSubmit)="isUSD = true"></app-button>
             <br>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-9">
             <div class="d-flex justify-content-center">
-                <app-card [flight]="flight" [isUSD]="isUSD"></app-card>
+                <app-card [journey]="journey" [isUSD]="isUSD"></app-card>
             </div>
         </div>
     </div>

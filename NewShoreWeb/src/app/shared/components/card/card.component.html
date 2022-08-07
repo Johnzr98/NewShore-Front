@@ -3,10 +3,17 @@
       {{ headerTitle }}
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{ flight.departureStation }} - {{ flight.arrivalStation }}</h5>
-      <p class="card-text">FlightCarrier: {{ flight.flightCarrier }}</p>
-      <p class="card-text">FlightNumber: {{ flight.flightNumber }}</p>
-      <p class="card-text">Price: {{ flight.price | currency: isUSD}}</p>
+      <h5 class="card-title">{{ journey.origin }} - {{ journey.destination }}</h5>
+      <p class="card-text text-danger">Price: {{ journey.price | currency: isUSD }}</p>
+      <hr>
+
+      <div *ngFor="let flight of journey.flights">
+        <p class="card-text" >Origin: {{ flight.origin }}</p>
+        <p class="card-text" >Destination: {{ flight.destination }}</p>
+        <p class="card-text" >Price: {{ flight.price | currency: isUSD }}</p>
+        <hr>
+      </div>
+
       <p class="card-text text-info">We create airline solutions through technology and business expertise</p>
       <a class="btn btn-primary">{{ textButton }}</a>
     </div>

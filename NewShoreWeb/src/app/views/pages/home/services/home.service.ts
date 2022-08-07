@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IFlight } from '../models/flight.interface';
+import { IJourney } from '../models/journey.interface';
 import { IRoute } from '../models/route.interface';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class HomeService {
     return this.http.get<IRoute[]>(`${this.base_url}/GetFlightsRoutes/${category}`);
   }
 
-  public getFlights(body: IRoute, category: number = 0): Observable<IFlight[]> {
-    return this.http.post<IFlight[]>(`${this.base_url}/GetAllFlights/${category}`, body);
+  public getJourney(body: IRoute, category: number = 0): Observable<IJourney> {
+    return this.http.post<IJourney>(`${this.base_url}/GetAllFlights/${category}`, body);
   }
 }
