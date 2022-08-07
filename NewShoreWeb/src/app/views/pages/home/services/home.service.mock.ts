@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { IRoute } from '../models/route.interface';
-import { IJourney } from '../models/journey.interface';
+import { IJourney, IJourneyFlight } from '../models/journey.interface';
 
 export class MockHomeService {
 
@@ -9,7 +9,22 @@ export class MockHomeService {
     arrivalStation: 'MED',
   }
   
-  dataJourney!: any;
+  dataJourney: IJourney = {
+    origin: 'BOG',
+    destination: 'MED',
+    price: 100,
+    flights: [
+      {
+        origin: 'BOG',
+        destination: 'MED',
+        price: 100,
+        transport: {
+          flightCarrier: '',
+          flightNumber: ''
+        }
+      }
+    ]
+  };
 
   routes: Observable<IRoute[]> = of([this.dataRoutes]);
   journey: Observable<IJourney> = of(this.dataJourney);

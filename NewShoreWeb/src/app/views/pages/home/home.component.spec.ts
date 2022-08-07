@@ -43,7 +43,7 @@ describe('HomeComponent', () => {
     expect(data).toBe(1);
   });
   
-  it('departureStation to be BOG when is called getFlights', () => {
+  it('departureStation to be BOG when is called getJourney', () => {
     const serviceSpy = spyOn(mockHomeService, 'getJourney').and.callThrough();
 
     const dataRoutes: IRoute = {
@@ -53,9 +53,9 @@ describe('HomeComponent', () => {
 
     component.search(dataRoutes);
 
-    let name = component.listCoincidencesFrom[0];
+    let destination = component.journey.destination;
 
     expect(serviceSpy).toHaveBeenCalled();
-    expect(name).toBe("BOG");
+    expect(destination).toBe("MED");
   });
 });
